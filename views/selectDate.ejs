@@ -1,31 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/selectDate.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/selectDate.css">
-  <title>Vehicle Rental</title>
-</head>
+    <title>Date Select</title>
+  </head>
 
-<body>
+  <body>
+    <div class="date-container">
+      <h2 class="main-heading">Select Date</h2>
+      <form method="POST" id="dateSubmit" action="/main">
+        <label for="start Date">Start Date</label>
+        <br />
+        <input type="date"/ name="startDate">
+        <br />
+        <label for="End Date">End Date</label>
+        <br />
+        <input type="date" name="endDate" />
+        <div class="pagination">
+          <button class="btn">Prev</button>
+          <button class="btn" type="submit" id="submitform">Submit</button>
+        </div>
+      </form>
+    </div>
 
-  <div class="date-container">
-    <h2 class="main-heading">Select Date</h2>
-   <form action="/selectDate">  
-    <label for="start Date">Start Date</label>  
-    <br>    
-    <input type="date"/>  
-    <br>  
-     <label for="start Date">End Date</label>  
-     <br/>
-    <input type="date"/>
-    </form>  
-    <div class="pagination">
-     <button class="btn">Prev</button>
-     <button class="btn" type="submit" onsubmit="javascript:alert('success')">Submit</button>
-     </div> 
-  </div>
-</body>
+    <script>
+      document
+        .getElementById("submitform")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          iziToast.success({
+            title: "Booking Confirmed",
+            message: "Vehical Booked Successfully",
+            position: "topRight",
+            timeout: 800,
+          });
+          setTimeout(function () {
+            window.location.pathname = "/";
+          }, 900);
+        });
+    </script>
+  </body>
+  <script src="js/script.js"></script>
 </html>

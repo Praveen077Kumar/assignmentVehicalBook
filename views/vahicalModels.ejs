@@ -12,25 +12,24 @@
 <body>
 
   <div class="container">
-    <h2 class="main-heading">Types of Vehicle</h2>
-   <form action="model" method="POST"> 
-           <% if (prods.length > 0) { %>
+    <h2 class="main-heading">Select Model</h2>
+   <form action="bookingdate" method="POST"> 
+           <% if (models.length > 0) { %> 
            <div>
-            <% for (let product of prods) { %>
-            <input type="radio" id="vahicalType" name="model" value=<%=product %>  /> <%= product %>
+            <% for (let model of models) { %>
+            <input type="radio" id="model" name="vahicalModel" value=<%= model.model %> /><%= model.model%>
             <br>
              <% } %>
            </div>
-          
-           <% } else { %>
+           <% } else { %> 
                         <h1>No Products Found!</h1>
                   <% } %>
-           <div class="pagination">
+
+        <div class="pagination">
               <button class="btn" id="previous">Prev</button>
               <input type="submit" id="next" value="Next" class="btn">
-          </div> 
+          </div>  
     </form>  
-   
   </div>
 </body>
   <script src="js/script.js"> </script>
