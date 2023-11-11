@@ -1,0 +1,31 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/main.css
+  ">
+  <title>Vehicle Rental</title>
+
+</head>
+
+<body>
+  <main>
+  <div class="container">
+    <h2 class="main-heading">What is Your Name</h2>
+    <form action="/seats" class="user-input" method="POST">
+      <label for="firstname">First name: </label>
+      <input type="text" name="firstname" id="firstname" placeholder="  Enter First Name  " required>
+      <br>
+      <label for="lastname">Last name: </label>
+      <input type="text" name="lastname" id="lastname" placeholder="  Enter Last Name  " required>
+      <input type="submit" id="next" value="Next">
+    </form>
+  </div>
+  </main>
+</body>
+
+</html>

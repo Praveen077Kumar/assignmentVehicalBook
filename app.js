@@ -1,6 +1,8 @@
 const express = require('express');
-const path= require('path');
+const sequelize = require('./db');
+const bodyParser = require('body-parser');
 const app = express();
+const path= require('path');
 const PORT = process.env.PORT || 3000;
 
 
@@ -10,12 +12,15 @@ app.set('views', path.join(__dirname, './views'));
 app.use(express.static(path.join(__dirname, 'public')));  //setup static path
 
 app.get('/', (req, res) => {
-    res.send("<h1>HELLO PROJECT</h1>");   //route setup
+  res.render('main', { pageTitle: 'Home Page' });
 });
 
 
 //access port to listen requests
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);  
+sequelize.sync().then(() => {
+  console.log('Database synced');
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
   });
+});
 
