@@ -11,10 +11,22 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 app.use(express.static(path.join(__dirname, 'public')));  //setup static path
 
+//body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.get('/', (req, res) => {
   res.render('main', { pageTitle: 'Home Page' });
 });
 
+
+//adding the routes 
+const userroute= require('./routes/route');
+const vahicalRoute=require('./routes/vehical');  
+
+
+// use the routes
+app.use('/',userroute);
+app.use('/',vahicalRoute)
 
 //access port to listen requests
 sequelize.sync().then(() => {
