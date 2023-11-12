@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/wheelsNo.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <title>Vehicle Rental</title>
 </head>
 
 <body>
-
   <div class="container">
     <h2 class="main-heading">Types of Vehicle</h2>
    <form action="model" method="POST"> 
@@ -21,18 +21,43 @@
             <br>
              <% } %>
            </div>
-          
            <% } else { %>
                         <h1>No Products Found!</h1>
                   <% } %>
            <div class="pagination">
-              <button class="btn" id="previous">Prev</button>
-              <input type="submit" id="next" value="Next" class="btn">
+              <input class="btn" type="button" id="previousButton" value="Previous"> 
+              <input type="submit" id="nextUser" value="Next" class="btn" disabled>
           </div> 
     </form>  
    
   </div>
 </body>
-  <script src="js/script.js"> </script>
+  <script>
+    $(document).ready(function () {
+            $('form').on('input change', 'input', function () {
+                var empty = false;
+                $('form input').each(function () {
+                    if ($(this).attr('type') === 'radio' && !$(`input[name="${$(this).attr('name')}"]:checked`).length) {
+                        return;
+                    }
+                    if (!$(this).val()) {
+                        empty = true;
+                    }
+                });
+                if (empty) {
+                    $('#nextUser').attr('disabled', 'disabled');
+                } else {
+                    $('#nextUser').removeAttr('disabled');
+                }
+            });
+        });
+</script>
 
+  <script>
+        $(document).ready(function () {
+            $('#previousButton').on('click', function () {
+                window.history.back();
+            });
+        });
+    </script>
 </html>

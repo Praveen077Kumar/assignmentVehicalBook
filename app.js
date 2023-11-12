@@ -5,11 +5,6 @@ const app = express();
 const path= require('path');
 const PORT = process.env.PORT || 3000;
 
-
-// const Vehicle = require('./models/vahical');
-// const Booking = require('./models/booking');
-// const User= require('./models/user');
-
 // routes 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));

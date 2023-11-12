@@ -15,7 +15,7 @@ exports.getVahical = async(req, res,next) => {
         pageTitle: 'vahicalType',
         path: '/vahicalType',
       })
-}
+  }
 
 
 

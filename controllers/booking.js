@@ -7,7 +7,6 @@ exports.bookingDate = async(req, res,next) => {
       });
 }
 
-
 exports.getDates=async(req,res,next) => {
     res.render('main', {
         pageTitle: 'vahicalType',

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/selectDate.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
@@ -20,17 +21,18 @@
       <form method="POST" id="dateSubmit" action="/main">
         <label for="start Date">Start Date</label>
         <br />
-        <input type="date"/ name="startDate">
+        <input type="date"/ name="startDate" id="datefield">
         <br />
         <label for="End Date">End Date</label>
         <br />
-        <input type="date" name="endDate" />
+        <input type="date" name="endDate" id="datefield" />
         <div class="pagination">
-          <button class="btn">Prev</button>
-          <button class="btn" type="submit" id="submitform">Submit</button>
+          <input class="btn" type="button" id="previousButton" value="Previous"> 
+          <button class="btn" type="submit" id="submitform" disabled>Submit</button>
         </div>
       </form>
     </div>
+</body>
 
     <script>
       document
@@ -48,6 +50,38 @@
           }, 900);
         });
     </script>
-  </body>
-  <script src="js/script.js"></script>
+
+  <script>
+   $(document).ready(function () {
+            $('form').on('input change', 'input, select', function () {
+                var empty = false;
+                $('form input, form select').each(function () {
+                    if ($(this).attr('type') === 'checkbox') {
+                        // Skip checkboxes
+                        return;
+                    }
+                    if ($(this).attr('type') === 'radio' && !$(`input[name="${$(this).attr('name')}"]:checked`).length) {
+                        // Skip unchecked radio buttons
+                        return;
+                    }
+                    if (!$(this).val()) {
+                        empty = true;
+                    }
+                });
+                if (empty) {
+                    $('#submitform').attr('disabled', 'disabled');
+                } else {
+                       $('#submitform').removeAttr('disabled');
+                }
+            });
+        });
+</script>
+
+<script>
+        $(document).ready(function () {
+            $('#previousButton').on('click', function () {
+                window.history.back();
+            });
+        });
+    </script>
 </html>

@@ -51,7 +51,8 @@
     color: white !important;
 }
 
-.btn:hover{
-    background-color: black;
-
-}
+#submitform[disabled] {
+            background-color: #dddddd;
+            color: hsl(0, 7%, 81%);
+            cursor: not-allowed;
+        }
