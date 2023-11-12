@@ -3,7 +3,7 @@ const sequelize = require('./db');
 const bodyParser = require('body-parser');
 const app = express();
 const path= require('path');
-const PORT = process.env.PORT || 3000;
+const PORT =3000;
 
 // routes 
 app.set('view engine', 'ejs');
